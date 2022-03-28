@@ -1,19 +1,20 @@
 #include <iostream>
+#include "Factorial.h"
+#include "Unique.h"
 using namespace std;
 
-int factorial(int n) {
-    if (n <= 1) {
-        return 1;
-    }
-    else {
-        return n * factorial(n - 1);
-    }
-}
-
 int main() {
-    int num = 0;
+    /*int num = 0;
     cout << "Enter a number : ";
     cin >> num;
-    cout << "Factorial of entered number: " << factorial(num);
+    cout << "Factorial of entered number: " << factorial(num);*/
+
+    string word = "";
+    cout << "Enter a word : ";
+    cin >> word;
+    if (isUniqueOrganize(word)) {
+        cout << "Each letter is unique in " << word << endl;
+    }
+    else { cout << "Some letters appears several time in " << word << endl; }
     return 0;
 }

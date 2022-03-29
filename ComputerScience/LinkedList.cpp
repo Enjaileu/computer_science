@@ -22,7 +22,11 @@ Node LinkedList::at(int n){
 		cout << "Use at function with indew between 0 & " << listSize - 1 << endl;
 	}
 	else {
-
+		Node* tempNode = firstNode;
+		int i = 0;
+		while (i < n) {
+			i++;
+		}
 	}
 }
 

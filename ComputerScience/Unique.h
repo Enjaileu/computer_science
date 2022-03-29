@@ -49,17 +49,17 @@ bool isUniqueOrganize(std::string& word) {
 	return true;
 }
 
-//version correction
-bool isUnique(std::string s) {
-	if (s.length() > 128 || s.length) return false;
-
-	boolean[] set = new boolean[128];
-	for (int i = 0; i < s.length(); i++) {
-		int v = s.charAt(i);
-		if (set[v]) {
-			return false;
-		}
-		set[v] = true;
-	}
-	return true;
-}
+////version correction
+//bool isUnique(std::string s) {
+//	if (s.length() > 128 || s.length) return false;
+//
+//	boolean[] set = new boolean[128];
+//	for (int i = 0; i < s.length(); i++) {
+//		int v = s.charAt(i);
+//		if (set[v]) {
+//			return false;
+//		}
+//		set[v] = true;
+//	}
+//	return true;
+//}

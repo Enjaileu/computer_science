@@ -20,13 +20,17 @@ Node LinkedList::at(int n){
 	if (n > listSize - 1) {
 		cout << "There is no item at index " << n << endl;
 		cout << "Use at function with indew between 0 & " << listSize - 1 << endl;
+		Node node{ 0, nullptr };
+		return node;
 	}
 	else {
 		Node* tempNode = firstNode;
 		int i = 0;
 		while (i < n) {
+			tempNode = tempNode->nextPtr;
 			i++;
 		}
+		return *tempNode;
 	}
 }
 

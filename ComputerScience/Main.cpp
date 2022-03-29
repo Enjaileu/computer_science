@@ -28,6 +28,11 @@ int main() {
     list.add(45);
     list.add(1);
     list.display();
+    cout << endl;
+
+    cout << list.at(0).value << endl;
+    cout << list.at(29).value << endl;
+    cout << list.at(4).value << endl;
 
     return 0;
 }

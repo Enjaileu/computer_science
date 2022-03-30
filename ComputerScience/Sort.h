@@ -9,7 +9,7 @@ public:
 
 private:
 	static void swapValues(Node* a, Node* b);
-	//static int quickPass(LinkedList& list);
 	static int quickPass(LinkedList& list, int startIndex, int endIndex);
+	static void mixValues(LinkedList& list);
 };
 

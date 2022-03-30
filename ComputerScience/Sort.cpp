@@ -1,5 +1,6 @@
 #include "Sort.h"
 #include <iostream>
+#include <time.h>  
 using std::cout;
 using std::endl;
 
@@ -46,59 +47,21 @@ void Sort::selectionSort(LinkedList& list) {
 	}
 }
 
-//void Sort::quickSort(LinkedList& list) {
-//	const int listSize = list.getSize();
-//	if (listSize == 0) {
-//		cout << "There is no item to sort" << endl;
-//	}
-//	else {
-//		int indexPivot = quickPass(list);
-//		LinkedList list01;
-//		LinkedList list02;
-//		for (int i = 0; i < indexPivot; i++) {
-//			list01.add(list.at(i)->value);
-//		}
-//		for (int i = indexPivot+1; i < listSize; i++) {
-//			list02.add(list.at(i)->value);
-//		}
-//		list01.display();
-//		list02.display();
-//	}
-//}
-
 void Sort::swapValues(Node* a, Node* b) {
 	int valueTemp = a->value;
 	a->value = b->value;
 	b->value = valueTemp;
 }
 
-//int Sort::quickPass(LinkedList& list ) {
-//	const int listSize = list.getSize();
-//	int pivotValue = list.at(listSize - 1)->value;
-//	int indexPivot = listSize - 1;
-//	int indexCheck = 0;
-//	while (indexCheck != indexPivot) {
-//		if (list.at(indexCheck)->value > pivotValue) {
-//			Node* higherValue = list.at(indexCheck);
-//			Node* prevNode = list.at(indexPivot - 1);
-//			Node* pivot = list.at(indexPivot);
-//			swapValues(higherValue, pivot);
-//			swapValues(higherValue, prevNode);
-//			indexPivot--;
-//		}
-//		else { indexCheck++; }
-//	}
-//	return indexPivot;
-//}
-
 void Sort::quickSort(LinkedList& list){
+	mixValues(list);
 	const int listSize = list.getSize();
 	quickPass(list, 0, listSize - 1);
 	cout << "fini" << endl;
 }
 
-
 int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
+	cout << "it" << endl;
 	const int listSize = list.getSize();
 	int prevStartIndex = startIndex;
 	int prevEndIndex = endIndex;
@@ -132,4 +95,13 @@ int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
 	}
 
 	return endIndex;
+}
+
+void Sort::mixValues(LinkedList& list) {
+	srand(time(NULL));
+	const int listSize = list.getSize();
+	for (int i = 0; i < 10; i++) {
+		int index = rand() % listSize - 2;
+		swapValues(list.at(index), list.at(index + 1));
+	}
 }

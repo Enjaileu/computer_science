@@ -4,8 +4,9 @@ class Sort
 {
 public:
 	static void bubbleSort(LinkedList& list);
+	static void selectionSort(LinkedList& list);
 
 private:
-	static void switchValues(Node* a, Node* b);
+	static void swapValues(Node* a, Node* b);
 };
 

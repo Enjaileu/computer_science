@@ -1,8 +1,16 @@
 #include "LinkedList.h"
 #include <iostream>
-using namespace std;
+using std::vector;
+using std::cout;
+using std::endl;
 
 LinkedList::LinkedList(){}
+
+LinkedList::LinkedList(vector<int> values){
+	for (int value : values) {
+		add(value);
+	}
+}
 
 void LinkedList::add(int value) {
 	Node* tempNode = new Node{value, nullptr};

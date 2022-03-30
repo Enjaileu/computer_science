@@ -11,6 +11,7 @@ class LinkedList
 {
 public:
 	LinkedList();
+	LinkedList(std::vector<int> values);
 
 	//add node à la fin
 	void add(int value);

@@ -4,7 +4,7 @@ using std::cout;
 using std::endl;
 
 void Sort::bubbleSort(LinkedList& list) {
-	const int listSize = list.GetSize();
+	const int listSize = list.getSize();
 	if (listSize == 0) {
 		cout << "There is no item to sort" << endl;
 	}
@@ -25,7 +25,7 @@ void Sort::bubbleSort(LinkedList& list) {
 }
 
 void Sort::selectionSort(LinkedList& list) {
-	const int listSize = list.GetSize();
+	const int listSize = list.getSize();
 	if (listSize == 0) {
 		cout << "There is no item to sort" << endl;
 	}
@@ -46,8 +46,52 @@ void Sort::selectionSort(LinkedList& list) {
 	}
 }
 
+void Sort::quickSort(LinkedList& list) {
+	const int listSize = list.getSize();
+	if (listSize == 0) {
+		cout << "There is no item to sort" << endl;
+	}
+	else {
+		int indexPivot = quickPass(list);
+		LinkedList list01;
+		LinkedList list02;
+		for (int i = 0; i < indexPivot; i++) {
+			list01.add(list.at(i)->value);
+		}
+		for (int i = indexPivot; i < listSize; i++) {
+			list02.add(list.at(i)->value);
+		}
+		list01.display();
+		quickPass(list01);
+		list01.display();
+		//quickPass(list02);
+	}
+	
+		
+
+}
+
 void Sort::swapValues(Node* a, Node* b) {
 	int valueTemp = a->value;
 	a->value = b->value;
 	b->value = valueTemp;
+}
+
+int Sort::quickPass(LinkedList& list) {
+	const int listSize = list.getSize();
+	int pivotValue = list.at(listSize - 1)->value;
+	int indexPivot = listSize - 1;
+	int indexCheck = 0;
+	while (indexCheck != indexPivot) {
+		if (list.at(indexCheck)->value > pivotValue) {
+			Node* higherValue = list.at(indexCheck);
+			Node* prevNode = list.at(indexPivot - 1);
+			Node* pivot = list.at(indexPivot);
+			swapValues(higherValue, pivot);
+			swapValues(higherValue, prevNode);
+			indexPivot--;
+		}
+		else { indexCheck++; }
+	}
+	return indexPivot;
 }

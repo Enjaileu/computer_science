@@ -27,7 +27,7 @@ public:
 	void display();
 
 	//return listSize
-	int GetSize() { return listSize; }
+	int getSize() { return listSize; }
 
 private:
 	Node* firstNode{ nullptr };

@@ -57,6 +57,13 @@ int main() {
     cout << "insert 43 at index 5" << endl;
     list.insert(43, 5);
     list.display();
+    cout << endl;
+    cout << "insert 12 at index 4" << endl;
+    list.insert(12, 4);
+    list.display();
+    list.insert(5, 7);
+    list.display();
+    list.insert(90, -8);
 
     return 0;
 }

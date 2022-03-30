@@ -43,12 +43,23 @@ void LinkedList::insert(int value, int index){
 			nextNode = firstNode;
 			node->nextPtr = nextNode;
 			firstNode = node;
+			listSize++;
 		}
 		else if (index > listSize) {
-			for (int i = listSize+1; i < index; i++) {
+			for (int i = listSize; i < index; i++) {
 				add(0);
 			}
 			add(value);
+		}
+		else if (index == listSize) {
+			add(value);
+		}
+		else {
+			prevNode = at(index - 1);
+			nextNode = at(index);
+			prevNode->nextPtr = node;
+			node->nextPtr = nextNode;
+			listSize++;
 		}
 
 	}
@@ -104,4 +115,5 @@ void LinkedList::display() {
 		cout << tempNode->value << " - " << tempNode->nextPtr << endl;
 		tempNode = tempNode->nextPtr;
 	}
+	cout << "List size = " << listSize << endl;
 }

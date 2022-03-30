@@ -26,6 +26,9 @@ public:
 	//display ce que contient la liste
 	void display();
 
+	//return listSize
+	int GetSize() { return listSize; }
+
 private:
 	Node* firstNode{ nullptr };
 	Node* lastNode{nullptr};

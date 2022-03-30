@@ -30,9 +30,33 @@ int main() {
     list.display();
     cout << endl;
 
-    cout << list.at(0).value << endl;
-    cout << list.at(29).value << endl;
-    cout << list.at(4).value << endl;
+    cout << list.at(0)->value << endl;
+    cout << list.at(29)->value << endl;
+    cout << list.at(4)->value << endl;
+    cout << endl;
+
+    list.remove();
+    cout << "remove last item" << endl;
+    list.display();
+
+    cout << endl;
+    cout << "remove index 1" << endl;
+    list.remove(1);
+    list.display();
+    cout << endl;
+    cout << "remove index 0" << endl;
+    list.remove(0);
+    list.display();
+    list.remove(2);
+
+    cout << endl;
+    cout << "insert 23 at index 0" << endl;
+    list.insert(23, 0);
+    list.display();
+    cout << endl;
+    cout << "insert 43 at index 5" << endl;
+    list.insert(43, 5);
+    list.display();
 
     return 0;
 }

@@ -15,13 +15,13 @@ public:
 	//add node à la fin
 	void add(int value);
 	//insert node à index n
-	void insert();
+	void insert(int value, int index);
 	//remove node à la fin
 	void remove();
 	//remove node à index n
 	void remove(int n);
-	//return node à index n;
-	Node at(int n);
+	//return ptr node à index n;
+	Node* at(int n);
 	//display ce que contient la liste
 	void display();
 

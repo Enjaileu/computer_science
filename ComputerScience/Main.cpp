@@ -7,13 +7,12 @@ using namespace std;
 
 int main() {
 
-    vector<int> values{ 95, 8, -6, 2, 99, 86, 2, 23 };
+    vector<int> values{ 16, 18, 8, 15, 17, 10, 19, 5, 10 };
     LinkedList list{ values };
     list.display();
     cout << endl;
     Sort::quickSort(list);
     list.display();
-
 
     return 0;
 }

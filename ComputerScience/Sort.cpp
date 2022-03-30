@@ -46,30 +46,25 @@ void Sort::selectionSort(LinkedList& list) {
 	}
 }
 
-void Sort::quickSort(LinkedList& list) {
-	const int listSize = list.getSize();
-	if (listSize == 0) {
-		cout << "There is no item to sort" << endl;
-	}
-	else {
-		int indexPivot = quickPass(list);
-		LinkedList list01;
-		LinkedList list02;
-		for (int i = 0; i < indexPivot; i++) {
-			list01.add(list.at(i)->value);
-		}
-		for (int i = indexPivot; i < listSize; i++) {
-			list02.add(list.at(i)->value);
-		}
-		list01.display();
-		quickPass(list01);
-		list01.display();
-		//quickPass(list02);
-	}
-	
-		
-
-}
+//void Sort::quickSort(LinkedList& list) {
+//	const int listSize = list.getSize();
+//	if (listSize == 0) {
+//		cout << "There is no item to sort" << endl;
+//	}
+//	else {
+//		int indexPivot = quickPass(list);
+//		LinkedList list01;
+//		LinkedList list02;
+//		for (int i = 0; i < indexPivot; i++) {
+//			list01.add(list.at(i)->value);
+//		}
+//		for (int i = indexPivot+1; i < listSize; i++) {
+//			list02.add(list.at(i)->value);
+//		}
+//		list01.display();
+//		list02.display();
+//	}
+//}
 
 void Sort::swapValues(Node* a, Node* b) {
 	int valueTemp = a->value;
@@ -77,21 +72,64 @@ void Sort::swapValues(Node* a, Node* b) {
 	b->value = valueTemp;
 }
 
-int Sort::quickPass(LinkedList& list) {
+//int Sort::quickPass(LinkedList& list ) {
+//	const int listSize = list.getSize();
+//	int pivotValue = list.at(listSize - 1)->value;
+//	int indexPivot = listSize - 1;
+//	int indexCheck = 0;
+//	while (indexCheck != indexPivot) {
+//		if (list.at(indexCheck)->value > pivotValue) {
+//			Node* higherValue = list.at(indexCheck);
+//			Node* prevNode = list.at(indexPivot - 1);
+//			Node* pivot = list.at(indexPivot);
+//			swapValues(higherValue, pivot);
+//			swapValues(higherValue, prevNode);
+//			indexPivot--;
+//		}
+//		else { indexCheck++; }
+//	}
+//	return indexPivot;
+//}
+
+void Sort::quickSort(LinkedList& list){
 	const int listSize = list.getSize();
-	int pivotValue = list.at(listSize - 1)->value;
-	int indexPivot = listSize - 1;
+	quickPass(list, 0, listSize - 1);
+	cout << "fini" << endl;
+}
+
+
+int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
+	const int listSize = list.getSize();
+	int prevStartIndex = startIndex;
+	int prevEndIndex = endIndex;
+	int pivotValue = list.at(endIndex)->value;
 	int indexCheck = 0;
-	while (indexCheck != indexPivot) {
+	while (indexCheck != endIndex) {
 		if (list.at(indexCheck)->value > pivotValue) {
-			Node* higherValue = list.at(indexCheck);
-			Node* prevNode = list.at(indexPivot - 1);
-			Node* pivot = list.at(indexPivot);
-			swapValues(higherValue, pivot);
-			swapValues(higherValue, prevNode);
-			indexPivot--;
+			if (endIndex - indexCheck > 1) {
+				Node* higherValue = list.at(indexCheck);
+				Node* prevNode = list.at(endIndex - 1);
+				Node* pivot = list.at(endIndex);
+				swapValues(higherValue, pivot);
+				swapValues(higherValue, prevNode);
+			}
+			else {
+				Node* higherValue = list.at(indexCheck);
+				Node* pivot = list.at(endIndex);
+				swapValues(higherValue, pivot);
+			}
+			endIndex--;
 		}
 		else { indexCheck++; }
 	}
-	return indexPivot;
+	if (prevEndIndex != endIndex) {
+		if (endIndex - prevStartIndex > 1) {
+			quickPass(list, prevStartIndex, endIndex - 1);
+		}
+		if (prevEndIndex - endIndex > 1) {
+			quickPass(list, endIndex + 1, prevEndIndex);
+		}
+	}
+
+	return endIndex;
 }

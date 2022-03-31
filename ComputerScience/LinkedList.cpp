@@ -91,37 +91,54 @@ void LinkedList::remove(){
 }
 
 void LinkedList::remove(int n){
-	if (n < listSize) {
-		Node* prevNode; 
-		Node* nodeToRemove; 
-		Node* nextNode; 
-		if (n == 0) {
-			nodeToRemove = firstNode;
-			nextNode = nodeToRemove->nextPtr;
-			delete(nodeToRemove);
-			firstNode = nextNode;
+	if (listSize > 0) {
+		if (n < listSize) {
+			Node* prevNode;
+			Node* nodeToRemove;
+			Node* nextNode;
+			if (n == 0) {
+				nodeToRemove = firstNode;
+				nextNode = nodeToRemove->nextPtr;
+				delete(nodeToRemove);
+				firstNode = nextNode;
+			}
+			else {
+				prevNode = at(n - 1);
+				nodeToRemove = prevNode->nextPtr;
+				nextNode = nodeToRemove->nextPtr;
+				delete(nodeToRemove);
+				prevNode->nextPtr = nextNode;
+			}
+			listSize--;
 		}
 		else {
-			prevNode = at(n - 1);
-			nodeToRemove = prevNode->nextPtr;
-			nextNode = nodeToRemove->nextPtr;
-			delete(nodeToRemove);
-			prevNode->nextPtr = nextNode;
+			cout << "There is no item at index " << n << endl;
+			cout << "Use remove function with index between 0 & " << listSize - 1 << endl;
 		}
-		listSize--;
 	}
 	else {
-		cout << "There is no item at index " << n << endl;
-		cout << "Use remove function with index between 0 & " << listSize - 1 << endl;
+		cout << "The list is empty, you can't remove item" << endl;
 	}
 }
 
 void LinkedList::display() {
 	cout << "Node list :" << endl;
-	Node* tempNode = firstNode;
-	while (tempNode != nullptr) {
-		cout << tempNode->value << " - " << tempNode->nextPtr << endl;
-		tempNode = tempNode->nextPtr;
+	if (listSize > 0) {
+		Node* tempNode = firstNode;
+		while (tempNode != nullptr) {
+			cout << tempNode->value << " - " << tempNode->nextPtr << endl;
+			tempNode = tempNode->nextPtr;
+		}
+		cout << "List size = " << listSize << endl;
 	}
-	cout << "List size = " << listSize << endl;
+	else {
+		cout << "The list is empty." << endl;
+	}
+}
+
+void LinkedList::clear() {
+	const int size = listSize;
+	for (int i = 0; i < size; i++) {
+		remove();
+	}
 }

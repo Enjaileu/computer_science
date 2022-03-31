@@ -25,6 +25,8 @@ public:
 	Node* at(int n);
 	//display ce que contient la liste
 	void display();
+	//clear all item in list
+	void clear();
 
 	//return listSize
 	int getSize() { return listSize; }

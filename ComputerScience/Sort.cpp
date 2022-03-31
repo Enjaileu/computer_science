@@ -51,7 +51,6 @@ void Sort::quickSort(LinkedList& list) {
 	mixValues(list);
 	const int listSize = list.getSize();
 	quickPass(list, 0, listSize - 1);
-	cout << "fini" << endl;
 }
 
 void Sort::mergeSort(LinkedList& list) {
@@ -65,7 +64,6 @@ void Sort::swapValues(Node* a, Node* b) {
 }
 
 int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
-	cout << "it" << endl;
 	const int listSize = list.getSize();
 	int prevStartIndex = startIndex;
 	int prevEndIndex = endIndex;
@@ -160,4 +158,7 @@ void Sort::divideThenMerge(LinkedList& list) {
 		}
 	}
 
+	//delete items in lists
+	list01.clear();
+	list02.clear();
 }

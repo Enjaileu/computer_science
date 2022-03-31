@@ -7,11 +7,11 @@ using namespace std;
 
 int main() {
 
-    vector<int> values{ 16, 18, 8, 15, 17, 10, 19, 5, 10, 85, 96, -5, -6, -78, 1, 465, -9, -89, 45 };
+    vector<int> values{ 18,  15, 10, 5, 85, -5,  -78, 465,  -89, 5, 12, 63 };
     LinkedList list{ values };
     list.display();
     cout << endl;
-    Sort::quickSort(list);
+    Sort::mergeSort(list);
     list.display();
 
     return 0;

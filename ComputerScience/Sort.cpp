@@ -47,17 +47,21 @@ void Sort::selectionSort(LinkedList& list) {
 	}
 }
 
-void Sort::swapValues(Node* a, Node* b) {
-	int valueTemp = a->value;
-	a->value = b->value;
-	b->value = valueTemp;
-}
-
-void Sort::quickSort(LinkedList& list){
+void Sort::quickSort(LinkedList& list) {
 	mixValues(list);
 	const int listSize = list.getSize();
 	quickPass(list, 0, listSize - 1);
 	cout << "fini" << endl;
+}
+
+void Sort::mergeSort(LinkedList& list) {
+	divideThenMerge(list);
+}
+
+void Sort::swapValues(Node* a, Node* b) {
+	int valueTemp = a->value;
+	a->value = b->value;
+	b->value = valueTemp;
 }
 
 int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
@@ -104,4 +108,56 @@ void Sort::mixValues(LinkedList& list) {
 		int index = rand() % listSize - 2;
 		swapValues(list.at(index), list.at(index + 1));
 	}
+}
+
+void Sort::divideThenMerge(LinkedList& list) {
+	//divide
+	const int listSize = list.getSize();
+	const int indMedian = listSize / 2;
+	LinkedList list01;
+	for (int i = 0; i < indMedian; i++) {
+		list01.add(list.at(i)->value);
+	}
+	LinkedList list02;
+	for (int i = indMedian; i < listSize; i++) {
+		list02.add(list.at(i)->value);
+	}
+	if (list01.getSize() > 1) {
+		divideThenMerge(list01);
+	}
+	if (list02.getSize() > 1) {
+		divideThenMerge(list02);
+	}
+
+	//merge
+	int ind01 = 0;
+	int ind02 = 0;
+	int itemSort = 0;
+	while (itemSort < listSize) {
+		if (list01.getSize() != ind01 && list02.getSize() != ind02) {
+			if (list01.at(ind01)->value < list02.at(ind02)->value) {
+				list.at(itemSort)->value = list01.at(ind01)->value;
+				ind01++;
+			}
+			else {
+				list.at(itemSort)->value = list02.at(ind02)->value;
+				ind02++;
+			}
+			itemSort++;
+		}
+		else if (list01.getSize() == ind01){
+			for (int i = ind02; i < list02.getSize(); i++) {
+				list.at(itemSort)->value = list02.at(i)->value;
+				itemSort++;
+			}
+
+		}
+		else {
+			for (int i = ind01; i < list01.getSize(); i++) {
+				list.at(itemSort)->value = list01.at(i)->value;
+				itemSort++;
+			}
+		}
+	}
+
 }

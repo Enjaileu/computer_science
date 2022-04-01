@@ -48,8 +48,8 @@ void Sort::selectionSort(LinkedList& list) {
 }
 
 void Sort::quickSort(LinkedList& list) {
-	mixValues(list);
 	const int listSize = list.getSize();
+	mixValues(list, listSize/2);
 	quickPass(list, 0, listSize - 1);
 }
 
@@ -99,12 +99,13 @@ int Sort::quickPass(LinkedList& list, int startIndex, int endIndex){
 	return endIndex;
 }
 
-void Sort::mixValues(LinkedList& list) {
+void Sort::mixValues(LinkedList& list, int it) {
 	srand(time(NULL));
 	const int listSize = list.getSize();
-	for (int i = 0; i < 10; i++) {
-		int index = rand() % listSize - 2;
-		swapValues(list.at(index), list.at(index + 1));
+	for (int i = 0; i < it; i++) {
+		int index01 = rand() % listSize;
+		int index02 = rand() % listSize;
+		swapValues(list.at(index01), list.at(index02));
 	}
 }
 

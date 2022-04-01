@@ -17,7 +17,7 @@ int main() {
     list.display();
     cout << endl;
     cout << "Mix :" << endl;
-    Sort::mixValues(list);
+    Sort::mixValues(list, 12);
     list.display();
     cout << endl;
     cout << "Selection Sort :" << endl;
@@ -25,7 +25,7 @@ int main() {
     list.display();
     cout << endl;
     cout << "Mix :" << endl;
-    Sort::mixValues(list);
+    Sort::mixValues(list, 10);
     list.display();
     cout << endl;
     cout << "Quick sort" << endl;
@@ -33,7 +33,7 @@ int main() {
     list.display();
     cout << endl;
     cout << "Mix :" << endl;
-    Sort::mixValues(list);
+    Sort::mixValues(list, 20);
     list.display();
     cout << endl;
     cout << "Merge Sort :" << endl;

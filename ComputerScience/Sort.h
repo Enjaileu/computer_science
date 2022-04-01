@@ -7,7 +7,7 @@ public:
 	static void selectionSort(LinkedList& list);
 	static void quickSort(LinkedList& list);
 	static void mergeSort(LinkedList& list);
-	static void mixValues(LinkedList& list);
+	static void mixValues(LinkedList& list, int it);
 
 private:
 	static void swapValues(Node* a, Node* b);

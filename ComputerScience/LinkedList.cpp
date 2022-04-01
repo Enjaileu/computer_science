@@ -125,9 +125,11 @@ void LinkedList::display() {
 	cout << "Node list :" << endl;
 	if (listSize > 0) {
 		Node* tempNode = firstNode;
+		int index = 0;
 		while (tempNode != nullptr) {
-			cout << tempNode->value << " - " << tempNode->nextPtr << endl;
+			cout << index << " || " << tempNode->value << " - " << tempNode->nextPtr << endl;
 			tempNode = tempNode->nextPtr;
+			index++;
 		}
 		cout << "List size = " << listSize << endl;
 	}
